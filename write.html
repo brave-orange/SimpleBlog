@@ -1,0 +1,66 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link rel="stylesheet" href="css/blog.css">
+<link rel="stylesheet" href="css/write.css">
+<script type="text/javascript" src="./js/write.js"></script>
+<script type="text/javascript" src="./js/SignIn.js"></script>
+</head>
+
+<body onload="onload()">
+<div class="main">
+<header>
+  <div class="quotes">
+    <p>我们不停的翻弄着回忆<br>
+       却再也找不回那时的自己<br>
+       红尘一梦，不再追寻</p>
+	 	 <?php
+	     session_start();
+		 if($_SESSION['name'] == "" || $_SESSION['name'] == null)
+		 {
+			echo "<a class='login' value='no' href='login.html'>登陆|注册</a>";
+		 }else{
+		     $name = $_SESSION['name'];
+			echo "<a class='login' href='#'>欢迎您!$name |</a><a class='login1' href='login.html'> 更换用户</a>";
+		 }
+	 
+	 ?>
+    <div class="text5">记录·回忆</div>
+    <div class="flower"><img src="image/flower.jpg"></div>
+  </div>
+  <!--nav begin-->
+  <div id="nav">
+    <ul>
+      <li><a href="index.html">首页</a></li>
+      <li><a href="movie.html">光影流年</a></li>
+      <li><a href="write.html">发布文章</a></li>
+      <li><a href="list.html">文章列表</a></li>
+	  <li><a href="about.html">关于我</a></li>
+    </ul>
+  </div>
+  <!--nav end--> 
+</header>
+<div class = "blogwall">
+    <div class="write">
+		<form action="php/push.php" method="post" onsubmit="return go(this)" enctype="multipart/form-data">
+		    <a href="javascript:;" class="a-upload">
+		        <input type="file" name="picture" >点击这里上传文章插图(宽图、不要超过300k)</input>
+			</a>
+		    <input class="ArticleTitle" type="text" name="title" placeholder="请输入标题" ></input>
+			<textarea class="MainBody" type="text" name="body" placeholder="请输入正文" ></textarea>
+			<input class="submit" type="submit" value="发表文章" />
+		</form>
+	</div>
+	
+</div>
+
+<div class="footer">
+<p>@YongCheng-w的个人博客<br>by:brage-orange<br>联系方式:<a href="https://github.com/brave-orange">github</a></p>
+</div>
+</div>
+
+</div> 
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link rel="stylesheet" href="css/blog.css">
+<link rel="stylesheet" href="css/about.css">
+</head>
+
+<body>
+<div class="main">
+<header>
+  <div class="quotes">
+    <p>我们不停的翻弄着回忆<br>
+       却再也找不回那时的自己<br>
+       红尘一梦，不再追寻</p>
+	 	 <?php
+	     session_start();
+		 if($_SESSION['name'] == "" || $_SESSION['name'] == null)
+		 {
+			echo "<a class='login' href='login.html'>登陆|注册</a>";
+		 }else{
+		     $name = $_SESSION['name'];
+			echo "<a class='login' href='#'>欢迎您!$name |</a><a class='login1' href='login.html'> 更换用户</a>";
+		 }
+	 
+	 ?>
+    <div class="text5">记录·回忆</div>
+    <div class="flower"><img src="image/flower.jpg"></div>
+  </div>
+  <!--nav begin-->
+  <div id="nav">
+    <ul>
+      <li><a href="index.html">首页</a></li>
+      <li><a href="movie.html">光影流年</a></li>
+      <li><a href="write.html">发布文章</a></li>
+      <li><a href="list.html">文章列表</a></li>
+	  <li><a href="about.html">关于我</a></li>
+    </ul>
+  </div>
+  <!--nav end--> 
+</header>
+<div class = "blogwall">
+	<div class="about">
+	<font>首页> 关于我</font>
+	<hr></hr>
+	    <p>我说你是人间的四月天；<br> 
+
+笑响点亮了四面风； <br> 
+
+轻灵在春的光艳中交舞着变。<br> 
+
+你是四月早天里的云烟， <br> 
+
+黄昏吹着风的软， <br> 
+
+星子在无意中闪， <br> 
+
+细雨点洒在花前。 <br> 
+
+那轻，那娉婷，你是， <br> 
+
+鲜妍百花的冠冕你戴着， <br> 
+
+你是天真，庄严， <br> 
+
+你是夜夜的月圆。 <br> 
+
+雪化后那片鹅黄，你像； <br> 
+
+新鲜初放芽的绿，你是； <br> 
+
+柔嫩喜悦, <br> 
+
+水光浮动着你梦中期待的白莲。 <br> 
+
+你是一树一树的花开， <br> 
+
+是燕在梁间呢喃， <br> 
+
+你是爱，是暖，是希望， <br> 
+
+你是人间的四月天.<br> 
+
+         
+           ——林徽因 《你是人间的四月天》</p>
+	</div>
+	
+</div>
+
+<div class="footer">
+<p>@YongCheng-w的个人博客<br>by:brage-orange<br>联系方式:<a href="https://github.com/brave-orange">github</a></p>
+</div>
+</div>
+
+</div> 
+</body>
+</html>

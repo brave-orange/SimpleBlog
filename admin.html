@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" style="height: 100%;"> 
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>博客后台管理</title>
+<style>
+
+	.right1{
+		margin:auto;
+		width:60%;
+		height:auto;
+		
+		margin-top:20px;
+		border:double 4px;
+        -moz-box-shadow:8px 8px 14px #333333; -webkit-box-shadow:8px 8px 14px #333333; box-shadow:8px 8px 14px #333333;
+	}
+	.t1{
+	    font-size:25px;
+		font-family:黑体;
+		margin-left:20%;
+	}
+	.footer{
+	    font-size:20px;
+		font-family:黑体;
+		position:absolute;
+		left:75%;top:20px;
+	
+	}
+
+</style>
+
+</head>
+
+<body style="height: 100%;">
+<?php
+	session_start();
+	if($_SESSION['admin']<>"yes")
+	{
+		echo "<h1>对不起 您没有权限访问本页！！！</h1>";
+		header("refresh:3;url = ./index.html");
+		exit;
+	}
+	
+?>
+    <p class="t1">博客文章管理</p>
+    <div class="right1">
+	   <table width="100%"border='3px'>
+			<tr>
+				<td nowrap align="left" style="word-wrap:break-word;">ID</td>
+				<td nowrap align="left" style="word-wrap:break-word;">文章标题</td>
+				<td nowrap align="left" style="word-wrap:break-word;">作者|发表时间</td>
+				<td nowrap align="left" style="word-wrap:break-word;">功能</td>
+			</tr>
+       <?php 
+			$sql = "select * from article";
+			include './php/mysql_conn.php';
+	
+			$res = mysql_query($sql,$con);
+			if (! $res)
+			 {
+			  die('Error: ' . mysql_error());
+			 }   
+				while($row=mysql_fetch_row($res)){
+					echo "<tr>";
+					for($i=0; $i<=2; $i++){
+						echo "<td nowrap align='left' style='word-wrap:break-word;'>$row[$i]</td>";
+					}
+					echo "<td nowrap align='left' style='word-wrap:break-word;'><a href='php/delete.php?name=article&id=$row[0]'>删除</a></td>";
+					echo "</tr>";
+				}
+					echo "</table>";
+
+
+		 ?>
+
+    </div>
+
+
+
+	<p class="t1">博客用户管理</p>
+    <div class="right1">
+	    	<table width="100%"border='3px'>
+			<tr>
+				<td nowrap align="left" style="word-wrap:break-word;">账号</td>
+				<td nowrap align="left" style="word-wrap:break-word;">名称</td>
+				<td nowrap align="left" style="word-wrap:break-word;">性别</td>
+				<td nowrap align="left" style="word-wrap:break-word;">学院</td>
+                <td nowrap align="left" style="word-wrap:break-word;">是否管理员</td>
+				<td nowrap align="left" style="word-wrap:break-word;" colspan="3">功能</td>
+
+			</tr>
+			<?php 
+			$sql = "select * from users";
+			include './php/mysql_conn.php';
+	
+			$res = mysql_query($sql,$con);
+			if (! $res)
+			 {
+			  die('Error: ' . mysql_error());
+			 }   
+				while($row=mysql_fetch_row($res)){
+					echo "<tr>";
+					for($i=0; $i<=3; $i++){
+						echo "<td nowrap align='left' style='word-wrap:break-word;'>$row[$i]</td>";
+					}
+					echo "<td nowrap align='left' style='word-wrap:break-word;'>$row[5]</td>";
+					
+					echo "<td nowrap align='left' style='word-wrap:break-word;'><a href='php/delete.php?name=users&id=$row[0]'>删除</a></td>";
+					
+					echo "<td nowrap align='left' style='word-wrap:break-word;'><a href='php/update.html?id=$row[0]'>修改</a></td>";
+					
+					echo "<td nowrap align='left' style='word-wrap:break-word;'><a href='php/admined.php?id=$row[0]'>设为管理员</a></td>";
+					echo "</tr>";
+					}
+					echo "</table>";
+
+
+		 ?>
+    </div>
+    <p class="footer"><a href="index.html" >前往博客-></a></p>
+</body>
+</html>
